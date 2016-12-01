@@ -1,0 +1,445 @@
+/*This Software is based on a mobile android Application  developed by Mr.Anthony Wambua
+  https://play.google.com/store/apps/details?id=homestage.eastafrica.org*/
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+#define THIRDRATE 0.11
+#define COMPRATE 0.2
+
+
+
+void displayLogo();
+void askPassword();
+void showMenu();
+void giveChoice();
+void getAsset();
+void selectAutomotive();
+void getCredentials();
+void selectType();
+void getComprehensiveBill();
+void getThirdPartyBill();
+void medicalHealth();
+void selectCrop();
+void getName();
+
+
+
+int main()
+{
+   displayLogo();
+   askPassword();
+
+}
+void displayLogo()
+{
+
+    printf("\t\t**************************\n");
+    printf("\t\tWelcome To Auto_Insurance.\n");
+    printf("\t\t**************************\n\n\n");
+
+}
+void askPassword()
+{
+
+  char adminUserName[25]="KamauBrain";
+  char userName[25];
+  char admin[16]="wambua";
+  char password[20];
+  printf("Enter UserName:\n");
+  scanf("%s",&userName);
+
+  printf("Enter Password:\n");
+  scanf("%s",&password);
+
+  if(strcmp(adminUserName,userName)==0 && strcmp(admin,password)==0)
+  {
+    printf("Correct Password\n");
+    showMenu();
+    giveChoice();
+
+  }else if(strlen(password)==0){
+    printf("Nothing Entered!!!!\n");
+    return(askPassword());
+
+    }else {
+        printf("Incorrect Password\n");
+        return(askPassword());
+    }
+}
+void showMenu()
+{
+    printf("Loading************\n\n");
+    printf("List of Insurance Companies Available\n");
+    printf("--------------------------------------\n\n");
+    printf("1. APA INSURANCE LIMITED\n");
+    printf("2. AAR INSURANCE KENYA LIMITED\n");
+    printf("3. AFRICA MERCHANT ASSURANCE LIMITED\n");
+    printf("3. AIG KENYA INSURANCE COMPANY LIMITED\n");
+    printf("4. APOLLO LIFE ASSURANCE LIMITED\n");
+    printf("5. BRITISH-AMERICAN INSURANCE COMPANY(KENYA)LIMITED\n");
+    printf("6. CANNON ASSURANCE LIMITED\n");
+    printf("7. CAPEX LIFE ASSURANCE COMPANY LIMITED\n");
+    printf("8. CIC GENERAL INSURANCE COMPANY\n");
+    printf("9. CONTINENTAL REINSURANCE LIMITED\n");
+    printf("10. KENYA ORIENT INSURANCE LIMITED\n");
+    printf("11. Exit\n");
+    printf("Selection:\n\n");
+
+
+}
+void giveChoice()
+{
+
+    int input;
+    scanf("%d",&input);
+    switch(input)
+    {
+        case 1:
+            printf("----------------------------------\n");
+            printf("Welcome To APA INSURANCE LIMITED\n");
+            printf("----------------------------------\n");
+            getAsset();
+            break;
+
+        case 2:
+
+            printf("Welcome To AAR INSURANCE LIMITED\n");
+            getAsset();
+            break;
+
+        case 3:
+
+            printf("Welcome To AFRICA MERCHANT ASSURANCE LIMITED\n");
+            getAsset();
+            break;
+
+        case 4:
+
+            printf("Welcome To AIG KENYA INSURANCE LIMITED\n");
+            getAsset();
+            break;
+
+        case 5:
+
+            printf("Welcome To BRITISH AMERICAN INSURANCE LIMITED\n");
+            getAsset();
+            break;
+
+        case 6:
+
+            printf("Welcome To CANNON INSURANCE LIMITED\n");
+            getAsset();
+            break;
+
+        case 7:
+
+            printf("Welcome To CAPEX LIFE INSURANCE LIMITED\n");
+            getAsset();
+            break;
+
+        case 8:
+
+            printf("Welcome To CIC GENERAL INSURANCE LIMITED\n");
+            getAsset();
+            break;
+
+        case 9:
+
+            printf("Welcome To CONTINENTAL INSURANCE LIMITED\n");
+            getAsset();
+            break;
+
+        case 10:
+
+            printf("Welcome To KENYA ORIENT INSURANCE LIMITED\n");
+            getAsset();
+            break;
+
+        case 11:
+            printf("Thank You for Using Our Service");
+            break;
+
+        default:
+            printf("Invalid Input\n\n");
+            return(giveChoice());
+
+
+
+    }
+}
+
+void getAsset()
+{
+    int choice;
+    printf("Select Category Of Asset.\n\n\n");
+    printf("1.Automotive.\n");
+    printf("2.Medical Health.\n");
+    printf("3.Agricultural Products.\n");
+    printf("4.Exit To Main Menu\n\n");
+
+    scanf("%d",&choice);
+
+
+    switch(choice)
+    {
+        case 1:
+            selectAutomotive();
+            break;
+
+
+        case 2:
+            medicalHealth();
+            break;
+
+
+        case 3:
+            selectCrop();
+            break;
+
+
+        case 4:
+            return(showMenu());
+            break;
+
+
+        default:
+            printf("Invalid Choice\n");
+
+
+    }
+}
+void selectAutomotive()
+{
+    printf("1.4-Door Sedan\n");
+    printf("2.Station Wagons\n");
+    printf("3.Light Trucks\n");
+    printf("4.Heavy Trucks\n");
+    printf("5.Other\n");
+
+    int input;
+    printf("Select:\n");
+    scanf("%d",&input);
+
+    switch(input)
+    {
+        case 1:
+            getCredentials();
+            selectType();
+            break;
+
+        case 2:
+            getCredentials();
+            selectType();
+            break;
+
+        case 3:
+            getCredentials();
+            selectType();
+            break;
+
+        case 4:
+            getCredentials();
+            selectType();
+            break;
+        case 5:
+
+            getCredentials();
+
+
+        default:
+            printf("Invalid Input.\n");
+            return(selectAutomotive());
+    }
+
+}
+void getCredentials()
+{
+    char firstname[17];
+    char secondname[17];
+    printf("Enter First Name:\n");
+    scanf("%s",&firstname);
+    printf("Enter Second Name:\n");
+    scanf("%s",&secondname);
+
+    FILE * credentials = fopen("Credentials.txt","w");
+
+    fprintf(credentials,"%s\n",firstname);
+    fprintf(credentials,"%s\n",secondname);
+
+    fclose(credentials);
+
+
+}
+void selectType()
+{
+    int selection;
+    printf("1. Comprehensive Insurance\n2. Third Party Insurance\nSelect\n\n");
+    scanf("%d",&selection);
+   if(selection == 1)
+    {
+
+        getComprehensiveBill();
+
+    }else if(selection == 2){
+
+        getThirdPartyBill();
+       }
+    else{
+        printf("Invalid Argument");
+        return(selectType());
+    }
+    }
+
+void getComprehensiveBill()
+{
+    char a;
+
+    int vehicle_Value,duration;
+    float insurancePremium;
+    printf("Enter Value of Vehicle:\n");
+    scanf("%d",&vehicle_Value);
+    printf("Enter Duration (In Months):\n");
+    scanf("%d",&duration);
+    insurancePremium =(float) (vehicle_Value*COMPRATE*duration)/100*12;
+
+    printf("Your Premium for %d months is %.2f\n",duration,insurancePremium);
+
+
+    printf("Do You Wish To print Receipt?\n");
+
+    printf("Y or N");
+    scanf("%s",&a);
+    if(a == 'Y' || a == 'y'){
+        FILE * credentials = fopen("Credentials.txt","w");
+        fprintf(credentials,"%d for %d is %f",vehicle_Value,duration,insurancePremium);
+    }else if (a=='N'|| a =='n'){
+        printf("Thank You !!!");
+
+    }
+
+}
+void getThirdPartyBill()
+{
+
+    char a;
+    int vehicle_Value,duration;
+    float insurancePremium;
+    printf("Enter Value of Vehicle:\n");
+    scanf("%d",&vehicle_Value);
+    printf("Enter Duration (In Months):\n");
+    scanf("%d",&duration);
+    insurancePremium = (float) (vehicle_Value*THIRDRATE*duration)/100*12;
+
+    printf("Your Premium for %d is %.2f\n\n",duration,insurancePremium);
+
+    printf("Do You Wish To print Receipt?\n Y or N\n");
+
+    scanf("%s",&a);
+    if(a == 'Y' || a == 'y'){
+        FILE * credentials = fopen("Credentials.txt","w");
+        fprintf(credentials,"%d for %d is %f",vehicle_Value,duration,insurancePremium);
+    }else if (a=='N'|| a =='n'){
+        printf("Thank You !!!");
+
+    }else{
+        FILE * credentials = fopen("Credentials.txt","w");
+            fprintf(credentials,"%d for %d is %f",vehicle_Value,duration,insurancePremium);
+    }
+
+
+
+}
+void medicalHealth()
+{
+    const float oneYear = 0.025;
+    const float twoYear = 0.045;
+    const float threeYear = 0.065;
+
+    printf("Welcome To Our Medical Plan\n\n Select A Suitable Plan\n");
+    int cover,selection,duration,monthly_gross;
+    printf("1. One Year Plan\n");
+    printf("2. Two Year Plan\n");
+    printf("3. Three Year Plan\n");
+    printf("4. Customize Your Plan\n");
+    printf("5. Exit");
+
+    switch(selection)
+    {
+    case 1:
+        getName();
+
+        printf("Enter Your Monthly Gross Income:\n");
+        scanf("%d",&monthly_gross);
+        cover = (oneYear*monthly_gross)*12;
+        printf("Premium To be Paid is %d",cover);
+        break;
+
+    case 2:
+        getName();
+
+
+        printf("Enter Your Monthly Gross Income:\n");
+        scanf("%d",&monthly_gross);
+        cover = (twoYear*monthly_gross)*24;
+        printf("Premium To be Paid is %d",cover);
+        break;
+
+    case 3:
+        getName();
+
+        printf("Enter Your Monthly Gross Income:\n");
+        scanf("%d",&monthly_gross);
+        cover = (threeYear*monthly_gross)*36;
+        printf("Premium To be Paid is %d",cover);
+        break;
+
+
+    case 4:
+        customizePlan();
+        break;
+
+    case 5:
+        printf("Thank You for using this service\n");
+        break;
+
+    default:
+        printf("Invalid Input\n");
+        break;
+
+
+
+
+
+    }
+
+
+
+    }
+
+
+void selectCrop(){
+    printf("Code In Progress");
+}
+void getName()
+{
+    char firstname[15],secondname[15],sirname[16];
+        printf("Enter Your Full Name:\n ");
+        scanf("%s %s %s",&firstname,&secondname,&sirname);
+        FILE * insuranceName = fopen("Insurance.txt","w");
+        fprintf(insuranceName,"%s %s %s",firstname,secondname,sirname);
+
+}
+void customizePlan()
+{
+    printf("Code IN prgrfew");
+
+}
+
+
+
+
